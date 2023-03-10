@@ -1,6 +1,6 @@
 package com.techreturners.bookmanager.service;
 
-import com.techreturners.bookmanager.exception.BookNotFoundException;
+import com.techreturners.bookmanager.exception.*;
 import com.techreturners.bookmanager.model.Book;
 import com.techreturners.bookmanager.repository.BookManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,7 @@ public class BookManagerServiceImpl implements BookManagerService {
 
     @Override
     public Book insertBook(Book book) {
+        if(bookManagerRepository.existsById(book.getId()))throw new BookAlreadyExistsException(book.getId());
         return bookManagerRepository.save(book);
     }
 
