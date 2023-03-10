@@ -12,4 +12,7 @@ public interface BookManagerService {
 
     //User Story 4 - Update Book By Id Solution
     void updateBookById(Long id, Book book);
+    // User story 5 - delete book by id
+    void deleteBook(Long id);
+
 }
